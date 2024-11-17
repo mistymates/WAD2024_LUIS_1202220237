@@ -5,20 +5,25 @@ include("dbconnection.php");
 // buatkan function addStudent()
 function addStudent()
 {
-    $a = readline ('Masukkan nama: ');
-    
+
     // variabel global
     global $conn;
 
     // Silakan buat variabel di bawah dengan data yang diambil dari form
+    $stuname = $_POST["stuname"];
+    $stuid = $_POST["stuid"];
+    $stuclass = $_POST["stuclass"];
+    $angkatan= $_POST["stuangkatan"];
 
 
     // Periksa apakah NIM sudah ada
     $ret = mysqli_query($conn, "");
+    $query = "SELECT stuid from tb_student WHERE nim = 'stuid'";
+
 
     if (mysqli_num_rows($ret) == 0) {
         // Masukkan data ke tabel tb_student
-        $query = "";
+        $query = "INSERT INTO tb_student (stuname, stuid, stuclass, stuangkatan) VALUES ($'stuname', 'stuid', 'stuclass', 'stuangkatan')";
         $result = mysqli_query($conn, $query);
 
         /**
@@ -29,7 +34,20 @@ function addStudent()
          * Jika operasi gagal, menampilkan pesan kesalahan.
          * Jika NIM sudah ada, menampilkan pesan bahwa NIM sudah ada.
          */
+
+         if ($result) {
+            echo "
+            <script>
+                alert('Data Berhasil Ditambahkan)";
+         } else {
+            echo "
+            <script>
+            alert('Data Gagal Ditambahkan)";
         
+         } 
+        
+    } else {
+        echo "NIM Sudah ada";
     }
 }
 
@@ -37,7 +55,11 @@ function editStudent($id) {
     global $conn;
 
     // Ambil input dari form dan simpan dalam variabel
-    
+
+    $stuname = $_POST["stuname"];
+    $stuid = $_POST["stuid"];
+    $stuclass = $_POST["stuclass"];
+    $angkatan= $_POST["angkatan"];
 
     // Update data mahasiswa berdasarkan ID
     $query = "";

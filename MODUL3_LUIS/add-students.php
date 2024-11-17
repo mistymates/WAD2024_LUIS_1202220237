@@ -5,7 +5,7 @@ include('includes/function.php');
 if (isset($_POST['submit'])) {
   
   //Panggil suatu fungsi untuk menambahkan mahasiswa baru ke database
-  
+  addStudent();
 
 }
 
@@ -53,7 +53,8 @@ if (isset($_POST['submit'])) {
                 <div class="card-body">
                   <h4 class="card-title" style="text-align: center;">Add Students</h4>
                   <!-- Buatkan formulir untuk menambahkan siswa baru -->
-                   
+                   <form class = "form-sample" method ="post">
+                    
                     <div class="form-group">
                       <label for="stuname">Student Name</label>
                       <input type="text" name="stuname" class="form-control" required>
