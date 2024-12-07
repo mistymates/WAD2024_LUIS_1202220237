@@ -13,7 +13,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Pass data if needed, e.g., summary stats for dosen/mahasiswa
         $data = [
             'dosen_count' => \App\Models\Dosen::count(),
             'mahasiswa_count' => \App\Models\Mahasiswa::count(),

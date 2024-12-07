@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    // Display a list of all mahasiswa
+    // display list mahasiswa mahasiswa
     public function index()
     {
         $mahasiswas = Mahasiswa::with('dosen')->get();
         return view('mahasiswa.index', compact('mahasiswas'));
     }
 
-    // Show the form for creating a new mahasiswa
+    // display form create 
     public function create()
     {
         $dosens = Dosen::all();
         return view('mahasiswa.create', compact('dosens'));
     }
 
-    // Store a newly created mahasiswa in the database
+    // store mahassiwa to database
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -37,14 +37,14 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambahkan!');
     }
 
-    // Display the specified mahasiswa
+    // display 
     public function show($id)
     {
         $mahasiswa = Mahasiswa::with('dosen')->findOrFail($id);
         return view('mahasiswa.show', compact('mahasiswa'));
     }
 
-    // Show the form for editing the specified mahasiswa
+    // form editing 
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
@@ -52,7 +52,7 @@ class MahasiswaController extends Controller
         return view('mahasiswa.edit', compact('mahasiswa', 'dosens'));
     }
 
-    // Update the specified mahasiswa in the database
+    // update 
     public function update(Request $request, $id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
@@ -69,7 +69,7 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui!');
     }
 
-    // Remove the specified mahasiswa from the database
+    // remove /delete
     public function destroy($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
