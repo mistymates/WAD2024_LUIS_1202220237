@@ -9,13 +9,13 @@ class CreateDosensTable extends Migration
     public function up()
     {
         Schema::create('dosens', function (Blueprint $table) {
-            $table->id(); // id sebagai primary key
+            $table->id(); // primary key
             $table->string('kode_dosen', 3)->unique();
             $table->string('nama_dosen');
             $table->string('nip')->unique();
             $table->string('email')->unique();
-            $table->string('no_telepon')->nullable(); // tidak wajib unik
-            $table->timestamps(); // created_at dan updated_at
+            $table->string('no_telepon')->nullable(); 
+            $table->timestamps(); 
         });
     }
 
